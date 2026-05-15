@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Courier+Prime:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "secondary": "#2d657a",
+                        "primary-fixed-dim": "#aec7f7",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "secondary-fixed-dim": "#98cee6",
+                        "on-secondary-fixed": "#001f29",
+                        "secondary-fixed": "#bbe9ff",
+                        "on-primary-fixed-variant": "#2e476f",
+                        "tertiary-container": "#363636",
+                        "tertiary-fixed": "#e4e2e1",
+                        "surface-bright": "#fff8f0",
+                        "on-surface": "#1f1b10",
+                        "surface-container": "#f7edda",
+                        "surface-tint": "#465f88",
+                        "surface-container-low": "#fdf3df",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#30677d",
+                        "surface-dim": "#e3d9c6",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-surface": "#353023",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary": "#002046",
+                        "outline": "#74777f",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "secondary-container": "#aee5fd",
+                        "on-primary-container": "#87a0cd",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#aec7f7",
+                        "surface-container-highest": "#ebe1cf",
+                        "on-tertiary-container": "#a09f9e",
+                        "on-secondary-fixed-variant": "#0b4d61",
+                        "inverse-on-surface": "#faf0dc",
+                        "background": "#fff8f0",
+                        "surface-variant": "#ebe1cf",
+                        "tertiary": "#212121",
+                        "surface-container-high": "#f1e7d4",
+                        "on-background": "#1f1b10",
+                        "error-container": "#ffdad6",
+                        "surface": "#fff8f0",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed": "#001b3d",
+                        "primary-container": "#1b365d",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stroke-thick": "3px",
+                        "stroke-thin": "1px",
+                        "margin-page": "40px",
+                        "gutter": "24px",
+                        "section-gap": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Noto Serif"],
+                        "body-sm": ["Courier Prime"],
+                        "annotation": ["Courier Prime"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Courier Prime"],
+                        "headline-lg-mobile": ["Noto Serif"],
+                        "label-caps": ["Courier Prime"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "annotation": ["11px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .millimeter-grid {
+            background-color: #fff8f0;
+            background-image:
+                linear-gradient(#e3d9c6 1px, transparent 1px),
+                linear-gradient(90deg, #e3d9c6 1px, transparent 1px),
+                linear-gradient(#ebe1cf 0.5px, transparent 0.5px),
+                linear-gradient(90deg, #ebe1cf 0.5px, transparent 0.5px);
+            background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+        }
+
+        .vellum-texture {
+            position: relative;
+        }
+
+        .vellum-texture::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .drafting-corner {
+            position: relative;
+        }
+
+        .drafting-corner::after {
+            content: "";
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid #002046;
+            border-right: 2px solid #002046;
+        }
+
+        .drafting-corner::before {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: -4px;
+            width: 12px;
+            height: 12px;
+            border-bottom: 2px solid #002046;
+            border-left: 2px solid #002046;
+        }
+
+        .blueprint-stamp {
+            border: 2px solid #002046;
+            padding: 4px 12px;
+            transform: rotate(-2deg);
+            display: inline-block;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="millimeter-grid vellum-texture min-h-screen flex flex-col font-body-md text-on-surface">
+    <!-- Top Navigation -->
+    <header
+        class="bg-surface-bright border-b-stroke-thick border-primary sticky top-0 z-50 flex justify-between items-center w-full px-margin-page py-4 max-w-full">
+        <div class="flex items-center gap-4">
+            <span
+                class="font-headline-lg text-headline-lg font-bold text-primary tracking-tighter uppercase">XIEHUB</span>
+            <div class="hidden md:flex gap-6 items-center">
+                <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-caps text-label-caps"
+                    href="#">PROJECTS</a>
+                <!--<a class="text-on-surface-variant font-body-md hover:bg-secondary-container/20 transition-colors duration-150 font-label-caps text-label-caps"
+                    href="#">ARCHIVES</a>
+                <a class="text-on-surface-variant font-body-md hover:bg-secondary-container/20 transition-colors duration-150 font-label-caps text-label-caps"
+                    href="#">SCHEMATICS</a>
+                <a class="text-on-surface-variant font-body-md hover:bg-secondary-container/20 transition-colors duration-150 font-label-caps text-label-caps"
+                    href="#">LIBRARY</a>-->
+            </div>
+        </div>
+        <div class="text-primary font-label-caps text-label-caps font-bold">
+            SYSTEM STATUS: ISENG
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow px-margin-page py-section-gap max-w-7xl mx-auto w-full">
+        <!-- Dashboard Header -->
+        <div class="mb-12 border-l-4 border-primary pl-6">
+            <p class="font-label-caps text-label-caps text-primary opacity-60 mb-2">OPERATIONAL OVERVIEW // REF.
+                8619-I-iii
+            </p>
+            <h1 class="font-headline-xl text-headline-xl text-primary uppercase leading-none">xieHUB: MY DIGITAL
+                PORTFOLIO</h1>
+        </div>
+        <!-- Bento Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-gutter">
+            <!-- Project 1: Kids English Learning -->
+            <div class="group cursor-pointer">
+                <div
+                    class="bg-surface-container border-stroke-thin border-primary p-4 h-full flex flex-col drafting-corner shadow-[4px_4px_0px_0px_rgba(0,32,70,1)] transition-transform hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-annotation text-[10px] text-primary">K-ENG_003</span>
+                        <span class="material-symbols-outlined text-primary text-lg" data-icon="book">book</span>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center mb-4">
+                        <div class="w-16 h-16 bg-white border border-outline p-1 overflow-hidden">
+                            <img alt="" class="w-full h-full object-contain mix-blend-multiply"
+                                data-alt="A minimalist architectural icon of children's alphabet blocks"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uhJ6RbJMvNbcEmQuhX_YeyP09DJUUK-yRzGCsriCx1NAVANqSgq_ecdbdzhHd-6qq1qitWs0LGZa4HsYhesb0QaY3gJx4vVPtrIHKGQZDMo5pGeUSNeA30gF5IuSIQDNM8lFQqqrrBPiEsV_t5vjSVIK-ROAGC-ogTvDUYaJvGM_6SxsQZ8UaWvci3nODSNgymdFp7P3pCuScZogi-IwWTdaPU3JcTqtloa1C3GC9iWDFk2HKidNGE7nr0" />
+                        </div>
+                    </div>
+                    <h3
+                        class="font-label-caps text-[11px] text-primary border-t border-dashed border-outline pt-3 leading-tight">
+                        KIDS ENGLISH LEARNING</h3>
+                    <p class="font-annotation text-[10px] mt-1 opacity-70 italic uppercase">Active</p>
+                </div>
+            </div>
+            <!-- Project 2: Investing Avg Calculator -->
+            <div class="group cursor-pointer">
+                <div
+                    class="bg-primary text-white p-4 h-full flex flex-col drafting-corner shadow-[4px_4px_0px_0px_rgba(33,33,33,1)] transition-transform hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-annotation text-[10px] text-surface-container">FIN_002</span>
+                        <div
+                            class="blueprint-stamp text-surface-bright font-label-caps text-[8px] border-surface-bright scale-90 origin-right">
+                            PRIORITY</div>
+                    </div>
+                    <div class="flex-grow flex flex-col items-center justify-center mb-4 gap-3 text-center">
+                        <div class="w-16 h-16 bg-surface-bright border border-primary p-1">
+                            <img alt="" class="w-full h-full object-contain"
+                                data-alt="Technical line art icon of a calculator"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0uhhulNFfFl3I2hlH0T_JewEEAjeuzOp3m6yLsKR_ToyzZAURay5VYxh_1FkWNvWgOrQA9EPVNr8ygaXdyZRMLA0nGOQcb68_dB4nSVmX1D-1ai0OikajXjxw6pnG4QDeSnQobrLYFF6reamq9F-aP8FgkNBu9qrAA4sSim60JuhTDjFIt7Ttp4CN4WNLzIMP35y4L85zVen8kHBpJwsyXHFhUpDO44sxxNpCZX-HejnMam02-BZWMzDKNg" />
+                        </div>
+                        <h3 class="font-label-caps text-[11px] leading-tight uppercase">INVESTING AVG CALCULATOR</h3>
+                    </div>
+                    <div class="mt-auto border-t border-on-primary-container/30 pt-3">
+                        <div class="flex justify-between text-[10px] font-annotation">
+                            <span>V.2.14</span>
+                            <span>LIVE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 3: Workout Tracker -->
+            <div class="group cursor-pointer">
+                <div
+                    class="bg-surface-container-high border-stroke-thin border-primary p-4 h-full flex flex-col drafting-corner shadow-[4px_4px_0px_0px_rgba(0,32,70,1)] transition-transform hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="font-annotation text-[10px] text-primary">PHYSIO_007</span>
+                        <span class="material-symbols-outlined text-primary text-lg"
+                            data-icon="fitness_center">fitness_center</span>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center mb-4">
+                        <div class="w-16 h-16 bg-white border border-outline p-1">
+                            <img alt="" class="w-full h-full object-contain mix-blend-multiply"
+                                data-alt="Line art icon of a dumbbell"
+                                src="https://lh3.googleusercontent.com/aida/ADBb0ugeha1NVOdDZG2yQMQqZExZpxHVfPX98jfSP2Se8-Yu3WcnHTQh7B5KA3FeXEx9TnfTgUMWMA6ISz1lXKzuHcQj3YL1oMItFPnLB7o5nm58hH-aDIYsUvZXKII34SmI2oK6hnRoNud30V2b7AF1fvuYXJz9J77w_kWTSlJNFTdVwBHVP3wpP1ngz8qLCe2pCW73LmbmNJlVFw3jwq6SOwy-xSeSQYecmNrfszlRhfNZCjDxRLCItvoC02w" />
+                        </div>
+                    </div>
+                    <h3
+                        class="font-label-caps text-[11px] text-primary border-t border-dashed border-outline pt-3 leading-tight">
+                        WORKOUT TRACKER</h3>
+                    <p class="font-annotation text-[10px] mt-1 opacity-70 italic uppercase">Protocol Log</p>
+                </div>
+            </div>
+            <!-- Future Project 1 -->
+            <div class="group cursor-pointer">
+                <div
+                    class="border-2 border-dashed border-outline bg-transparent p-4 h-full flex flex-col items-center justify-center min-h-[200px] hover:bg-secondary-container/10 transition-all">
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-outline flex items-center justify-center mb-3 text-outline group-hover:text-primary group-hover:border-primary">
+                        <span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+                    </div>
+                    <span
+                        class="font-label-caps text-[10px] text-outline group-hover:text-primary uppercase tracking-widest text-center">Future
+                        Project</span>
+                </div>
+            </div>
+            <!-- Future Project 2 -->
+            <div class="group cursor-pointer">
+                <div
+                    class="border-2 border-dashed border-outline bg-transparent p-4 h-full flex flex-col items-center justify-center min-h-[200px] hover:bg-secondary-container/10 transition-all">
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-outline flex items-center justify-center mb-3 text-outline group-hover:text-primary group-hover:border-primary">
+                        <span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+                    </div>
+                    <span
+                        class="font-label-caps text-[10px] text-outline group-hover:text-primary uppercase tracking-widest text-center">Future
+                        Project</span>
+                </div>
+            </div>
+            <!-- Future Project 3 (Additional Placeholder for layout) -->
+            <div class="group cursor-pointer">
+                <div
+                    class="border-2 border-dashed border-outline bg-transparent p-4 h-full flex flex-col items-center justify-center min-h-[200px] hover:bg-secondary-container/10 transition-all">
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-outline flex items-center justify-center mb-3 text-outline group-hover:text-primary group-hover:border-primary">
+                        <span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+                    </div>
+                    <span
+                        class="font-label-caps text-[10px] text-outline group-hover:text-primary uppercase tracking-widest text-center">Future
+                        Project</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer Section -->
+    <footer class="bg-surface-container border-t-stroke-thick border-tertiary px-margin-page py-8 w-full">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-gutter">
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-4">
+                    <span class="font-label-caps text-label-caps text-tertiary">XIEHUB TECHNICAL BUREAU</span>
+                    <span class="text-tertiary opacity-30">|</span>
+                    <span class="font-annotation text-annotation text-tertiary opacity-70">REF_CODE:
+                        MB-HDR0032</span>
+                </div>
+                <p class="font-annotation text-annotation text-tertiary opacity-50 uppercase tracking-tighter">© 1952
+                    ARCH-HUB TECHNICAL BUREAU | BUREAU OF ARCHITECTURAL STANDARDS</p>
+            </div>
+            <div class="flex items-center gap-8">
+                <div class="blueprint-stamp border-tertiary px-4 py-1 text-tertiary">
+                    <p class="font-annotation text-annotation leading-tight">LAST SYNCED</p>
+                    <p class="font-label-caps text-label-caps font-bold">2 SEP 1986</p>
+                </div>
+                <!--<div class="flex gap-4">
+                    <a class="font-label-caps text-label-caps text-tertiary opacity-70 hover:text-primary transition-all"
+                        href="#">REGULATORY</a>
+                    <a class="font-label-caps text-label-caps text-tertiary opacity-70 hover:text-primary transition-all"
+                        href="#">PRIVACY</a>
+                    <a class="font-label-caps text-label-caps text-tertiary opacity-70 hover:text-primary transition-all"
+                        href="#">DIRECTORY</a>
+                </div>
+            -->
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
